@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulex Solutions | Q2 2025 Social Media Performance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F2F5;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 640px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            text-align: center;
+        }
+        .kpi-number {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .kpi-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #4A5568;
+            margin-top: 0.5rem;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #718096;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .flowchart-step {
+            border: 2px solid #E2E8F0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        .flowchart-arrow {
+            font-size: 2rem;
+            color: #CBD5E0;
+            margin: 0.5rem 0;
+            align-self: center;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white py-8 px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-black text-gray-900">AMBULEX SOLUTIONS</h1>
+        <p class="text-xl md:text-2xl font-bold text-[#3357FF]">Q2 2025 Social Media Performance Report</p>
+        <p class="text-md text-gray-500 mt-2">Period: April – June 2025</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="text-center mb-12">
+            <h2 class="section-title">Q2 Performance At a Glance</h2>
+            <p class="section-subtitle">
+                The second quarter showed a story of contrasts: explosive growth on newer platforms alongside significant challenges in organic reach on established ones. Video content is the undisputed king of engagement.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="kpi-card">
+                    <p class="kpi-number text-[#3357FF]">4,288</p>
+                    <p class="kpi-label">Total Followers Across All Platforms</p>
+                </div>
+                <div class="kpi-card">
+                    <p class="kpi-number text-[#FF5733]">68,704</p>
+                    <p class="kpi-label">Total Video Views (Facebook & TikTok)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="platform-comparison" class="mb-12">
+            <div class="card">
+                <h3 class="text-2xl font-bold text-center mb-2">Platform Follower Comparison</h3>
+                <p class="text-center text-gray-600 mb-6">Facebook continues to lead in audience size, but TikTok's rapid growth is the quarter's biggest story. Instagram and X represent foundational opportunities.</p>
+                <div class="chart-container mx-auto max-w-4xl">
+                    <canvas id="followersBarChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="tiktok" class="text-center mb-12">
+            <h2 class="section-title">The Star Performer: TikTok's Explosive Growth</h2>
+            <p class="section-subtitle">TikTok was the engine of growth this quarter, capturing a highly engaged, local audience with video content. The platform drove massive views and rapid follower acquisition.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card">
+                    <h4 class="font-bold text-lg text-center mb-2">Audience by Gender</h4>
+                    <div class="chart-container" style="height: 250px;">
+                        <canvas id="genderPieChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="font-bold text-lg text-center mb-2">Audience by Age</h4>
+                    <div class="chart-container" style="height: 250px;">
+                        <canvas id="agePieChart"></canvas>
+                    </div>
+                </div>
+                <div class="card lg:col-span-2">
+                     <h4 class="font-bold text-lg text-center mb-2">Top Locations</h4>
+                    <p class="text-gray-600 text-sm mb-4">Ambulex Solutions' TikTok audience is overwhelmingly concentrated in Kenya, particularly in Nairobi, indicating strong local relevance.</p>
+                    <div class="chart-container" style="height: 250px;">
+                        <canvas id="locationBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 max-w-4xl mx-auto">
+                <div class="card">
+                    <h4 class="font-bold text-lg text-center mb-2">TikTok Engagement Metrics</h4>
+                    <p class="text-center text-gray-600 mb-4">While views and likes are high, shares and comments indicate room for deeper interaction.</p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <p class="text-3xl font-black text-[#3357FF]">15,533</p>
+                            <p class="text-sm font-semibold text-gray-600">Likes</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-black text-[#FF5733]">17</p>
+                            <p class="text-sm font-semibold text-gray-600">Shares</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-black text-[#A133FF]">45</p>
+                            <p class="text-sm font-semibold text-gray-600">Comments</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-4">Note: The reported "Total Followers: 608 (-100.00% change)" for June 28 - July 4 likely indicates a reporting reset or specific weekly period, not an actual loss of all followers. Recent weekly declines in "Reached Audience" and "Engaged Audience" require further investigation.</p>
+                </div>
+                <div class="card">
+                    <h4 class="font-bold text-lg text-center mb-2">TikTok Activity Peaks (July 4, 2025)</h4>
+                    <p class="text-center text-gray-600 mb-4">Engagement was intermittent throughout the day, with notable peaks suggesting optimal posting times.</p>
+                    <ul class="list-disc list-inside text-left text-gray-700 mx-auto w-fit">
+                        <li>Around 9 AM</li>
+                        <li>4-5 PM</li>
+                        <li>9-10 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="facebook-linkedin" class="mb-12">
+             <h2 class="section-title text-center">Established Platforms: A Mixed Bag</h2>
+             <p class="section-subtitle text-center">Facebook and LinkedIn show stable but challenged performance. Facebook relies heavily on paid advertising for visibility, while LinkedIn's engagement is inconsistent.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-center mb-2">Facebook's Impression Sources</h3>
+                    <p class="text-center text-gray-600 mb-6">The vast majority of Facebook impressions were driven by paid campaigns, with organic and viral reach dropping significantly. This highlights a critical need to boost organic content appeal.</p>
+                    <div class="chart-container mx-auto max-w-lg">
+                        <canvas id="impressionsDonutChart"></canvas>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-6 text-center">
+                        <div>
+                            <p class="text-3xl font-black text-[#33FF57]">4,952</p>
+                            <p class="text-sm font-semibold text-gray-600">Views (▲43%)</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-black text-[#FFC300]">97</p>
+                            <p class="text-sm font-semibold text-gray-600">Likes (▲17%)</p>
+                        </div>
+                    </div>
+                    <p class="text-center text-gray-600 mt-4 text-sm">Top performing post reached 8,399 impressions (Untitled post), emphasizing the need for clear post titling.</p>
+                </div>
+                <div class="card">
+                     <h3 class="text-2xl font-bold text-center mb-2">LinkedIn: The Professional Front</h3>
+                     <div class="flex flex-col h-full justify-center text-center">
+                        <div>
+                             <p class="text-5xl font-black text-[#3357FF]">122</p>
+                             <p class="font-semibold mt-2">Total Followers</p>
+                        </div>
+                        <div class="mt-8">
+                             <p class="text-3xl font-bold text-red-500">▼16.7%</p>
+                             <p class="font-semibold mt-1">Follower Growth (vs. prior 30 days)</p>
+                        </div>
+                        <p class="text-gray-600 mt-8 px-4">LinkedIn shows inconsistent visitor engagement and slowing follower growth. A more structured content strategy is needed to engage this professional audience effectively. Page views fluctuated throughout the quarter, with occasional spikes in early to mid-April and mid-June.</p>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="instagram-x" class="mb-12">
+            <h2 class="section-title text-center">Emerging Channels: Instagram & X (Twitter)</h2>
+            <p class="section-subtitle text-center">Instagram and X are currently in their foundational stages, offering significant untapped potential for audience growth and brand visibility.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-center mb-2">Instagram: Room for Growth</h3>
+                    <div class="flex flex-col h-full justify-center text-center">
+                        <div>
+                             <p class="text-5xl font-black text-[#FFC300]">7</p>
+                             <p class="font-semibold mt-2">Total Followers</p>
+                        </div>
+                        <div class="mt-8">
+                             <p class="text-3xl font-bold text-red-500">124</p>
+                             <p class="font-semibold mt-1">Total Reach</p>
+                        </div>
+                        <p class="text-gray-600 mt-8 px-4">Instagram currently has very low reach and growth. This platform presents a significant opportunity for expansion through targeted content and consistent engagement.</p>
+                        <h4 class="font-bold text-lg text-center mt-6 mb-2">Key Challenges & Opportunities:</h4>
+                        <ul class="list-disc list-inside text-left text-gray-700 mx-auto w-fit">
+                            <li>**Challenge:** Minimal existing audience.</li>
+                            <li>**Opportunity:** Increase targeted posts, use Reels, Stories, & hashtags.</li>
+                            <li>**Action:** Post at least 4 times per week for consistency.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="text-2xl font-bold text-center mb-2">X (Twitter): Building a Presence</h3>
+                     <div class="flex flex-col h-full justify-center text-center">
+                        <div>
+                             <p class="text-5xl font-black text-[#A133FF]">44</p>
+                             <p class="font-semibold mt-2">Total Followers</p>
+                        </div>
+                        <p class="text-gray-600 mt-8 px-4">With 44 followers, X (Twitter) is in its early stages. The focus here is on establishing a consistent presence, sharing relevant updates, and engaging with industry conversations to build a foundational audience.</p>
+                        <h4 class="font-bold text-lg text-center mt-6 mb-2">Initial Focus:</h4>
+                        <ul class="list-disc list-inside text-left text-gray-700 mx-auto w-fit">
+                            <li>Define clear content strategy.</li>
+                            <li>Consistent posting of industry news & updates.</li>
+                            <li>Active engagement with relevant accounts.</li>
+                            <li>Utilize trending hashtags.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategy" class="text-center mb-12">
+            <h2 class="section-title">Strategic Pillars for Q3 2025</h2>
+            <p class="section-subtitle">Based on Q2 performance, the strategy for Q3 will focus on three core pillars to drive holistic growth and capitalize on key opportunities.</p>
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row md:justify-around items-center">
+                <div class="flex flex-col items-center w-full md:w-1/4">
+                    <div class="flowchart-step bg-blue-50 border-blue-200 text-blue-800">
+                        <span class="text-3xl">1</span>
+                        <p>Boost Organic Virality</p>
+                    </div>
+                    <p class="text-gray-600 mt-2 px-2">Develop highly engaging, shareable video and interactive content to reduce reliance on paid ads.</p>
+                </div>
+                <div class="flowchart-arrow transform rotate-90 md:rotate-0">→</div>
+                <div class="flex flex-col items-center w-full md:w-1/4">
+                    <div class="flowchart-step bg-green-50 border-green-200 text-green-800">
+                        <span class="text-3xl">2</span>
+                        <p>Optimize Paid Campaigns</p>
+                    </div>
+                    <p class="text-gray-600 mt-2 px-2">Maintain and refine paid campaigns with optimized targeting to ensure maximum ROI where needed.</p>
+                </div>
+                <div class="flowchart-arrow transform rotate-90 md:rotate-0">→</div>
+                 <div class="flex flex-col items-center w-full md:w-1/4">
+                    <div class="flowchart-step bg-purple-50 border-purple-200 text-purple-800">
+                        <span class="text-3xl">3</span>
+                        <p>Grow New Channels</p>
+                    </div>
+                    <p class="text-gray-600 mt-2 px-2">Launch focused campaigns on Instagram & X to build foundational reach and follower bases.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-takeaways" class="text-center mb-12">
+            <h2 class="section-title">Key Takeaways & Next Steps</h2>
+            <p class="section-subtitle">Q2 highlighted the power of video and local engagement on TikTok, while revealing areas for strategic improvement on other platforms. Our focus for Q3 is on fostering organic growth, optimizing existing efforts, and building a stronger presence on emerging channels.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="card">
+                    <h3 class="text-xl font-bold text-center mb-4 text-[#3357FF]">Embrace Video-First Content</h3>
+                    <p class="text-gray-700">TikTok's success proves video is key. Integrate more short, engaging video content across Facebook, Instagram, and LinkedIn to capture attention and drive interaction.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-center mb-4 text-[#FF5733]">Prioritize Organic Engagement</h3>
+                    <p class="text-gray-700">Reduce reliance on paid impressions by creating highly shareable and interactive content that naturally encourages likes, comments, and shares on Facebook and Instagram.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-center mb-4 text-[#A133FF]">Strategic Channel Development</h3>
+                    <p class="text-gray-700">Invest in consistent posting and targeted campaigns for Instagram and X (Twitter) to build their follower bases and establish a stronger, more active presence.</p>
+                </div>
+                 <div class="card lg:col-span-3">
+                    <h3 class="text-xl font-bold text-center mb-4 text-[#33FF57]">Data-Driven Optimization</h3>
+                    <p class="text-gray-700">Continuously monitor performance metrics, especially on TikTok, to identify trends, understand audience behavior, and adapt strategies for maximum impact and sustained growth.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-6 bg-gray-800 text-gray-400">
+        <p>Prepared by the Digital Marketing Department | Ambulex Solutions</p>
+        <p class="text-sm">July 07, 2025</p>
+    </footer>
+
+    <script>
+        const wrapLabel = (label, maxWidth = 16) => {
+            if (typeof label !== 'string' || label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                    if (currentLine) lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine) lines.push(currentLine);
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const chartColors = {
+            blue: '#3357FF',
+            green: '#33FF57',
+            red: '#FF5733',
+            pink: '#FF33A1',
+            purple: '#A133FF',
+            orange: '#FFC300',
+            gray: '#E2E8F0'
+        };
+
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#4A5568',
+                        font: {
+                            family: "'Inter', sans-serif",
+                            weight: '600'
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: '#E2E8F0'
+                    },
+                    ticks: {
+                       color: '#4A5568'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                       color: '#4A5568'
+                    }
+                }
+            }
+        };
+
+        const followersData = {
+            labels: ['Facebook', 'TikTok', 'LinkedIn', 'X (Twitter)', 'Instagram'],
+            datasets: [{
+                label: 'Total Followers',
+                data: [3507, 608, 122, 44, 7],
+                backgroundColor: [chartColors.blue, chartColors.red, chartColors.purple, chartColors.pink, chartColors.orange],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        new Chart(document.getElementById('followersBarChart'), {
+            type: 'bar',
+            data: followersData,
+            options: {
+                ...defaultChartOptions,
+                indexAxis: 'y',
+                 scales: {
+                    y: {
+                         grid: { display: false }
+                    },
+                    x: {
+                         grid: { color: '#E2E8F0' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        const genderData = {
+            labels: ['Male', 'Female'],
+            datasets: [{
+                data: [72.4, 27.6],
+                backgroundColor: [chartColors.blue, chartColors.pink],
+                hoverOffset: 4
+            }]
+        };
+        new Chart(document.getElementById('genderPieChart'), {
+            type: 'doughnut',
+            data: genderData,
+            options: {
+                 ...defaultChartOptions,
+                 cutout: '60%',
+                 plugins: { ...defaultChartOptions.plugins }
+            }
+        });
+
+        const ageData = {
+            labels: ['18-24', '25-34', '35-44', '45-54'],
+            datasets: [{
+                data: [44.7, 41.6, 10.7, 3],
+                backgroundColor: [chartColors.green, chartColors.orange, chartColors.purple, chartColors.red],
+                hoverOffset: 4
+            }]
+        };
+        new Chart(document.getElementById('agePieChart'), {
+            type: 'doughnut',
+            data: ageData,
+            options: {
+                 ...defaultChartOptions,
+                 cutout: '60%',
+                 plugins: { ...defaultChartOptions.plugins }
+            }
+        });
+
+        const impressionsData = {
+            labels: [wrapLabel('Paid Impressions'), wrapLabel('Organic Impressions'), wrapLabel('Viral Impressions')],
+            datasets: [{
+                data: [126700, 8916, 2984],
+                backgroundColor: [chartColors.blue, chartColors.gray, chartColors.red],
+                hoverOffset: 4
+            }]
+        };
+        new Chart(document.getElementById('impressionsDonutChart'), {
+            type: 'doughnut',
+            data: impressionsData,
+            options: {
+                 ...defaultChartOptions,
+                 cutout: '60%',
+                 plugins: { ...defaultChartOptions.plugins }
+            }
+        });
+        
+        const locationData = {
+            labels: ['Nairobi', 'Kisumu', 'Kampala', 'Nakuru', 'Meru'],
+            datasets: [{
+                label: 'Audience Percentage',
+                data: [89.5, 4.1, 1.7, 1.7, 1.2],
+                backgroundColor: chartColors.red,
+            }]
+        };
+        new Chart(document.getElementById('locationBarChart'), {
+            type: 'bar',
+            data: locationData,
+            options: {
+                ...defaultChartOptions,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                       callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                },
+                 scales: {
+                    x: {
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
